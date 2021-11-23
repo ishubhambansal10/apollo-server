@@ -7,3 +7,9 @@ createTrainee(user: CreateUserInput): User!
 updateTrainee(id: ID!,name: String, email: String, role: String): User!
 deleteTrainee(id: ID!): ID!
 }
+
+type Subscription {
+traineeAdded: User!
+traineeUpdated: User!
+traineeDeleted: ID!
+}
