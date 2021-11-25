@@ -3,3 +3,10 @@ id: ID!
 name: String!
 email: String!
 }
+input inputCredentials {
+email: String!
+password: String!
+}
+type Token {
+token: String!
+}

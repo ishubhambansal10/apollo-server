@@ -1,7 +1,7 @@
 export default {
-  getMyProfile: () => ({
-    id: 1,
-    name: 'Shubham Bansal',
-    email: 'shubham@gmail.com',
-  }),
+  getMyProfile: async (parent, args, context) => {
+    const { dataSources: { userAPI } } = context;
+    const response = await userAPI.getMe();
+    return response.data;
+  },
 };
