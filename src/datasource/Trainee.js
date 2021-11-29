@@ -8,6 +8,11 @@ export class TraineeAPI extends RESTDataSource {
     this.baseURL = `${config.serviceURL}/api/trainee`;
   }
 
+  willSendRequest(request) {
+    request.headers.set('Authorization', this.context.token);
+    console.log(request.headers);
+  }
+
   async getTrainee(limit, skip) {
     return this.get('/', { limit, skip });
   }
