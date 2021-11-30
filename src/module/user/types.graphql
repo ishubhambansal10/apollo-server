@@ -10,3 +10,23 @@ password: String!
 type Token {
 token: String!
 }
+input newUserInfo {
+originalId: String
+name: String
+email: String
+role: String
+}
+type genericResponse {
+message: String!
+data: UserInfo
+status: String!
+}
+type UserInfo {
+    originalId: String
+    name: String
+    email: String
+    role: String
+    password : String
+    createdAt: String
+    deletedAt: String
+}
