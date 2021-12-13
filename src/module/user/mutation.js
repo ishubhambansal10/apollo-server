@@ -1,3 +1,6 @@
+import pubsub from '../pubsub';
+import constant from '../../lib/constant';
+
 export default {
   loginUser: async (parent, args, context) => {
     const { payload: { email, password } } = args;
@@ -21,12 +24,20 @@ export default {
     const response = await userAPI.updateUser({
       originalId, name, email, role,
     });
+    pubsub.publish(constant.subscriptions.USER_UPDATED, { userUpdated: response });
     return response;
   },
   deleteUser: async (parent, args, context) => {
     const { payload: { originalId } } = args;
     const { dataSources: { userAPI } } = context;
     const response = await userAPI.deleteUser({ originalId });
+    const { message, status } = response;
+    console.log(originalId);
+    pubsub.publish(constant.subscriptions.USER_DELETED, {
+      userDeleted: {
+        message, status, originalId,
+      },
+    });
     return response;
   },
 };

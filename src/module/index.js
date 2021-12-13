@@ -20,6 +20,7 @@ export default {
     },
     Subscription: {
       ...trainee.Subscription,
+      ...user.Subscription,
     },
   },
   typeDefs,
