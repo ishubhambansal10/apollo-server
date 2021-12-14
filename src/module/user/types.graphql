@@ -20,6 +20,11 @@ type genericResponse {
 message: String!
 data: UserInfo
 status: String!
+originalId: String
+}
+type allUser{
+total: Int
+data: [UserInfo]!
 }
 type UserInfo {
     originalId: String
@@ -28,5 +33,4 @@ type UserInfo {
     role: String
     password : String
     createdAt: String
-    deletedAt: String
 }

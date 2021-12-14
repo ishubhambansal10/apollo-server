@@ -2,7 +2,7 @@ type Query {
   getMyProfile: User!
   getAllTrainees: [User]
   getTrainee(id: ID!): User!
-  getAllUser: [UserInfo]
+  getAllUser(skip: Int, limit: Int): allUser!
 }
 
 type Mutation {
@@ -19,4 +19,6 @@ type Subscription {
 traineeAdded: User!
 traineeUpdated: User!
 traineeDeleted: ID!
+userUpdated: genericResponse!
+userDeleted: genericResponse!
 } 

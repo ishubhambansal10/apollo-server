@@ -17,8 +17,8 @@ export class UserAPI extends RESTDataSource {
     return this.get('/me');
   }
 
-  getAll() {
-    return this.get('/');
+  getAllUser(skip, limit) {
+    return this.get('/', { skip, limit });
   }
 
   loginUser(payload) {
